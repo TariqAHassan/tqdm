@@ -542,7 +542,11 @@ class tqdm(Comparable):
         from pandas.core.groupby import DataFrameGroupBy
         from pandas.core.groupby import SeriesGroupBy
         from pandas.core.groupby import GroupBy
-        from pandas.core.groupby import PanelGroupBy
+        try:
+            from pandas.core.groupby import PanelGroupBy
+        except ImportError:
+            # pandas>=0.23.0
+            from pandas.core.groupby.groupby import PanelGroupBy
         from pandas import Panel
         try:
             # pandas>=0.18.0
